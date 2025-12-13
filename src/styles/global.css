@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "Alpino";
+  src: url("../assets/fonts/Alpino-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tanker";
+  src: url("../assets/fonts/Tanker-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root{
+  --cream: #F4F2EE;
+  --cream-2: #FFF9F0;
+
+  --peach: #F2A874;
+  --peach-2: #F7C9A6;
+
+  --navy: #151A2B;                 /* azul quase preto */
+  --grid: rgba(21, 26, 43, 0.08);
+
+  --border: rgba(21, 26, 43, 0.35);
+  --border-soft: rgba(21, 26, 43, 0.18);
+
+  --shadow: 16px 18px 0 rgba(21, 26, 43, 0.22);
+
+  --radius-lg: 18px;
+  --radius-md: 14px;
+
+  /* MAIS GROSSO (retro vibes) */
+  --stroke: 3px;
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+
+body{
+  margin: 0;
+  background: var(--cream);
+  color: var(--navy);
+  font-family: "Alpino", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  overflow: hidden;
+}
+
+img{ display: block; max-width: 100%; }
+button, input, select{ font-family: inherit; }

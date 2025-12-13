@@ -1,0 +1,444 @@
+/* =========================
+   FONTS (Tanker + Alpino)
+   ajuste os nomes dos arquivos se necessário
+   ========================= */
+@font-face{
+  font-family: "Tanker";
+  src: url("../assets/fonts/Tanker-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Alpino";
+  src: url("../assets/fonts/Alpino-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================
+   TOKENS BASE
+   ========================= */
+:root{
+  --ink: #141414;              /* PRETÃO */
+  --cream: #FFF6E8;
+  --peach: #F2A874;
+  --grid: rgba(0,0,0,0.06);
+
+  --radius-lg: 22px;
+  --radius-md: 16px;
+
+  --stroke: 3.5px;            /* MAIS GROSSO */
+  --shadow: 14px 16px 0 rgba(0,0,0,0.22);
+  --shadow-soft: 10px 12px 0 rgba(0,0,0,0.18);
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin: 0;
+  font-family: "Alpino", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+/* =========================
+   FUNDO COM GRID (CLARO)
+   ========================= */
+.stage{
+  min-height: 100vh;
+  padding: 32px;
+  background:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.desktop{
+  position: relative;
+  width: min(1280px, 96vw);
+  height: min(900px, 92vh);
+  margin: 0 auto;
+}
+
+/* =========================
+   JANELAS (BASE)
+   ========================= */
+.window{
+  position: absolute;
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  border: var(--stroke) solid var(--ink);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.window__bar{
+  height: 54px;
+  background: linear-gradient(180deg, #F7B98C, #F2A874);
+  border-bottom: var(--stroke) solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px 0 18px;
+}
+
+.window__title{
+  font-family: "Tanker", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 15px;
+}
+
+.window__controls{
+  display: flex;
+  gap: 10px;
+}
+
+.window__dot{
+  width: 22px;
+  height: 22px;
+  border-radius: 8px;
+  border: var(--stroke) solid var(--ink);
+  background: #fff;
+}
+
+.window__body{
+  padding: 18px;
+}
+
+/* =========================
+   POSICIONAMENTO (MANTIDO)
+   ========================= */
+.win--main{
+  width: 540px;
+  height: 1080px; /* NÃO ALTERAR */
+  left: 50%;
+  top: 58%;
+  transform: translate(-50%, -50%) rotate(-0.6deg);
+  z-index: 6;
+}
+
+.win--left{
+  width: 460px;
+  height: 600px; /* NÃO ALTERAR */
+  left: calc(50% - 900px);
+  top: calc(50% - 120px);
+  transform: rotate(-2deg);
+  z-index: 4;
+}
+
+.win--right{
+  width: 560px;
+  height: 600px; /* NÃO ALTERAR */
+  left: 50%;
+  top: 50%;
+  transform: translate(72%, -52%) rotate(1.1deg);
+  z-index: 5;
+}
+
+/* =========================
+   UI INTERNA (PRO)
+   ========================= */
+.sectionTitle{
+  font-family: "Tanker", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: 14px;      /* MAIOR */
+  margin: 18px 0 10px;
+}
+
+.subtleLabel{
+  font-size: 14px;      /* MAIOR */
+  margin: 0 0 8px;
+  opacity: .92;
+}
+
+.row{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* INPUTS */
+.input{
+  flex: 1;
+  min-width: 210px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: var(--stroke) solid var(--ink);
+  background: #fff;
+  font-size: 15px;      /* MAIOR */
+  line-height: 1.2;
+  outline: none;
+  box-shadow: var(--shadow-soft);
+}
+.input::placeholder{ opacity: .55; }
+
+.select{
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: var(--stroke) solid var(--ink);
+  background: #fff;
+  font-size: 14px;      /* MAIOR */
+  outline: none;
+  box-shadow: var(--shadow-soft);
+}
+
+/* BOTÕES */
+.btn{
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: var(--stroke) solid var(--ink);
+  background: #fff;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  font-family: "Alpino", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;      /* MAIOR */
+}
+.btn:active{
+  transform: translate(2px,2px);
+  box-shadow: 6px 7px 0 rgba(0,0,0,0.18);
+}
+.btn--accent{
+  background: var(--peach);
+}
+
+/* chips */
+.chipsRow{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chip{
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: var(--stroke) solid var(--ink);
+  background: #fff;
+  font-size: 13px;      /* MAIOR */
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 7px 8px 0 rgba(0,0,0,0.14);
+  user-select: none;
+}
+.chip:active{ transform: translate(1px,1px); box-shadow: 6px 7px 0 rgba(0,0,0,0.14); }
+.chip--active{
+  background: rgba(242,168,116,0.35);
+}
+
+/* lista */
+.taskList{
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* item */
+.task{
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: var(--stroke) solid var(--ink);   /* PRETO E GROSSO */
+  background: #fff;
+  box-shadow: 10px 12px 0 rgba(0,0,0,0.14);
+}
+
+.task__left{
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  align-items: start;
+  gap: 12px;
+}
+
+.task__check{
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--ink);
+}
+
+.task__title{
+  font-size: 16px;      /* MAIOR */
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 6px;
+}
+
+.task__meta{
+  font-size: 13px;      /* MAIOR */
+  opacity: .78;
+}
+
+.task__title--done{
+  text-decoration: line-through;
+  opacity: .55;
+}
+
+.task__actions{
+  display: flex;
+  gap: 10px;
+  align-items: start;
+}
+
+/* botões de ação (X grande) */
+.iconBtn{
+  width: 42px;                /* MAIOR */
+  height: 42px;               /* MAIOR */
+  border-radius: 14px;
+  border: var(--stroke) solid var(--ink);
+  background: #fff;
+  font-size: 18px;            /* MAIOR */
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 7px 8px 0 rgba(0,0,0,0.14);
+}
+.iconBtn:active{ transform: translate(1px,1px); box-shadow: 6px 7px 0 rgba(0,0,0,0.14); }
+
+.badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: var(--stroke) solid var(--ink);
+  font-size: 12px;            /* MAIOR */
+  background: #fff;
+  box-shadow: 6px 7px 0 rgba(0,0,0,0.12);
+}
+.badgeDot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--ink);
+}
+
+.empty{
+  margin-top: 8px;
+  font-size: 14px;            /* MAIOR */
+  opacity: .75;
+}
+
+/* =========================
+   ARTE (janelas laterais)
+   ========================= */
+.art{
+  height: calc(100% - 54px);
+  padding: 16px;
+  display: grid;
+  place-items: center;
+}
+
+.art img{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 18px;
+  border: var(--stroke) solid var(--ink);
+  background: #fff;
+}
+
+/* =========================
+   DESKTOP ART (dentro da main)
+   ========================= */
+.mainFooterArt{
+  margin-top: 18px;
+  border-radius: 18px;
+  border: var(--stroke) solid rgba(0,0,0,0.35);
+  background: rgba(255,255,255,0.75);
+  overflow: hidden;
+
+  /* 🔑 deixa o container se adaptar ao conteúdo */
+  height: auto;
+}
+
+.mainFooterArt img{
+  width: 100%;
+  height: auto;              /* 🔑 acompanha a imagem */
+  object-fit: contain;
+  display: block;
+  transform: translateY(0px); /* NUNCA MEXER */
+}
+
+/* =========================
+   LOGO (fixa)
+   ========================= */
+.brand{
+  position: absolute;
+  left: 56px;
+  top: 56px;
+  z-index: 20;
+}
+
+.brand img{
+  width: 200px;
+  height: 200px;
+  border-radius: 16px;
+  border: var(--stroke) solid var(--ink);
+  background: #fff;
+  box-shadow: 12px 14px 0 rgba(0,0,0,0.16);
+}
+
+/* =========================
+   FLOATING ICONS (só os 4)
+   ========================= */
+.floatingIcons{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9;
+}
+
+.floatingIcon{
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+  filter: drop-shadow(14px 16px 0 rgba(0,0,0,0.18));
+  opacity: 0.95;
+}
+
+.floatingIcon--calendar{
+  right: -200px;
+  bottom: -300px;
+  transform: rotate(6deg);
+}
+
+.floatingIcon--folder{
+  right: 30px;
+  top: 40px;
+  transform: rotate(-5deg);
+  opacity: 0.92;
+}
+
+.floatingIcon--reminder{
+  left: -400px;
+  top: -50px;
+  transform: rotate(4deg);
+  opacity: 0.92;
+}
+
+.floatingIcon--todo{
+  left: -600px;
+  top: 530px;
+  transform: rotate(-6deg);
+  z-index: 10;
+}
+
+/* Scroll APENAS na janela principal (TAREFAS) */
+.win--main .window__body{
+  height: calc(100% - 54px); /* 54px = altura da barra */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
