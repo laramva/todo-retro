@@ -18,13 +18,15 @@ export default function TodoFilters() {
         >
           todas
         </button>
+
         <button
           type="button"
-          className={`chip ${filters.status === "active" ? "chip--active" : ""}`}
-          onClick={() => setStatus("active")}
+          className={`chip ${filters.status === "pending" ? "chip--active" : ""}`}
+          onClick={() => setStatus("pending")}
         >
           pendentes
         </button>
+
         <button
           type="button"
           className={`chip ${filters.status === "completed" ? "chip--active" : ""}`}

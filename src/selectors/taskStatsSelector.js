@@ -5,8 +5,9 @@ export const taskStatsSelector = selector({
   key: "taskStatsSelector",
   get: ({ get }) => {
     const todos = get(todosAtom);
-    const done = todos.filter((t) => t.done).length;
+    const completed = todos.filter((t) => t.completed).length;
     const total = todos.length;
-    return { total, done, pending: total - done };
+
+    return { total, completed, pending: total - completed };
   },
 });

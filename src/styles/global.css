@@ -44,8 +44,13 @@ body{
   background: var(--cream);
   color: var(--navy);
   font-family: "Alpino", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  overflow: hidden;
+
+  overflow-x: hidden;
+  overflow-y: auto;
 }
+
+
+
 
 img{ display: block; max-width: 100%; }
 button, input, select{ font-family: inherit; }

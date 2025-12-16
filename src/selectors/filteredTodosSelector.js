@@ -11,8 +11,8 @@ export const filteredTodosSelector = selector({
     return todos.filter((t) => {
       const okStatus =
         status === "all" ||
-        (status === "pending" && !t.done) ||
-        (status === "done" && t.done);
+        (status === "pending" && !t.completed) ||
+        (status === "completed" && t.completed);
 
       const okPriority = priority === "all" || t.priority === priority;
 
