@@ -117,7 +117,7 @@ body{
   width: 540px;
   height: 1080px; /* NÃO ALTERAR */
   left: 50%;
-  top: 58%;
+  top: 100%;
   transform: translate(-50%, -50%) rotate(-0.6deg);
   z-index: 6;
 }
@@ -136,7 +136,7 @@ body{
   height: 600px; /* NÃO ALTERAR */
   left: 50%;
   top: 50%;
-  transform: translate(82%, -52%) rotate(1.1deg);
+  transform: translate(82%, -52%) rotate(1.1deg); /* My Files mais pra direita */
   z-index: 5;
 }
 
@@ -416,7 +416,7 @@ body{
 }
 
 .floatingIcon--folder{
-  right: -40px;
+  right: 30px;
   top: 40px;
   transform: rotate(-5deg);
   opacity: 0.92;
@@ -436,71 +436,41 @@ body{
   z-index: 10;
 }
 
+/* Scroll APENAS na janela principal (TAREFAS) */
+.win--main .window__body{
+  height: calc(100% - 54px); /* 54px = altura da barra */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 /* =========================
-   NOTEBOOK FIX (1366x768 e telas baixas)
-   - reduz escala
-   - puxa conteúdo pra cima
-   - evita cortar topo
+   TIRAR ZOOM (escala do desktop inteiro)
+   - mantém ícones e janelas no lugar
    ========================= */
 
 :root{
-  --ui-scale: 1;
-  --ui-shiftY: 0px;
+  --desk-scale: 1;
 }
 
-/* aplica escala + shift no "desktop" inteiro */
+/* zoom (Chrome/Edge) + fallback (Firefox) */
 .desktop{
-  transform: translateY(var(--ui-shiftY)) scale(var(--ui-scale));
+  zoom: var(--desk-scale);
+  transform: scale(var(--desk-scale));
   transform-origin: top center;
 }
 
-/* menos padding pra caber tudo */
-@media (max-width: 1024px){
-  .stage{ padding: 14px; }
-}
-
-/* notebooks comuns */
+/* notebook 1366x768 (valor padrão bom) */
 @media (max-width: 1366px){
-  :root{
-    --ui-scale: .57;     /* antes ~.60 */
-    --ui-shiftY: -54px;
-  }
+  :root{ --desk-scale: .78; }
+  .stage{ padding: 16px; }
 }
 
-@media (max-height: 800px){
-  :root{
-    --ui-scale: .55;     /* antes ~.58 */
-    --ui-shiftY: -60px;
-  }
+/* notebooks mais baixos */
+@media (max-height: 780px){
+  :root{ --desk-scale: .74; }
 }
 
-@media (max-height: 740px){
-  :root{
-    --ui-scale: .52;     /* antes ~.55 */
-    --ui-shiftY: -66px;
-  }
-}
-
-/* além disso: traz a janela principal mais pra cima em telas baixas */
-@media (max-height: 800px){
-  .win--main{
-    top: 52%;
-  }
-}
-@media (max-height: 740px){
-  .win--main{
-    top: 50%;
-  }
-}
-/* ===== Ajuste fino notebook: descer a janela principal ===== */
-@media (max-width: 1366px){
-  .win--main{
-    top: 60% !important; /* desce um pouco */
-  }
-}
-
-@media (max-height: 740px){
-  .win--main{
-    top: 120% !important; /* desce mais em telas baixas */
-  }
+/* se ainda estiver grande em 1366x768 */
+@media (max-height: 720px){
+  :root{ --desk-scale: .70; }
 }
